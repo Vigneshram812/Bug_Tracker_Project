@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bug Tracker</h1>
+    <div class="bug-form">
+        <input type="text" id="bugTitle" placeholder="Bug Title">
+        <textarea id="bugDescription" placeholder="Bug Description"></textarea>
+        <input type="text" id="workProduct" placeholder="Work Product">
+        <input type="text" id="component" placeholder="Component">
+        <input type="date" id="dateIdentified">
+        <input type="text" id="personIdentified" placeholder="Person Identified">
+        <button onclick="addBug()">Add Bug</button>
+        <button id="saveButton" onclick="saveToExcel()" disabled>Save to Excel</button>
+    </div>
+    <div class="bug-list" id="bugList"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Set the maximum date to today
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dateInput = document.getElementById('dateIdentified');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('max', today);
+        });
+    </script>
+</body>
+</html>
